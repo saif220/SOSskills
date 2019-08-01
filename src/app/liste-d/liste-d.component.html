@@ -1,0 +1,54 @@
+<p style='font-size: 25px;font-weight: bold;text-align: center'>Mise à jour des Listes Déroulantes</p>
+<div class="mat-elevation-z8" style="  height: 450px;
+overflow: auto;">
+<br>
+<div id="header-div"><p style='font-size: 20px;text-align: center;font-weight: bold;color: white'>Listes déroulante</p></div>
+<br>
+<div id="container">
+  <div class="row">
+   <div class="col-sm-4" style='height: fit-content;'><p style='font-size: 20px;margin-left: 5%;font-weight: bold;'>Disponibilité</p>
+    <p  *ngFor="let technique of techniques let i = index; trackBy: trackByFn" ><label style="padding-left: 25px;">{{technique}}</label></p>
+    <button (click)="open(content)" mat-stroked-button style=" font-size: 15px; font-weight: bold">
+      <i class="fas fa-plus-circle icon" id="plus" aria-hidden="true" style="color: green;"></i>&nbsp;&nbsp;Saisir nouvelle disponibilité</button>
+   </div>
+   <div class="col-sm-4"><p style='font-size: 20px;margin-left: 5%;font-weight: bold;'>Qualité du CV</p>
+    <p  *ngFor="let metier of metiers"><label style="padding-left: 25px;">{{metier}}</label></p>
+    <button (click)="add()" mat-stroked-button style=" font-size: 15px; font-weight: bold">
+      <i class="fas fa-plus-circle icon" id="plus" aria-hidden="true" style="color: green;"></i>&nbsp;&nbsp;Saisir nouvelle qualité</button>
+   </div>
+   <div class="col-sm-4"><p style='font-size: 20px;margin-left: 5%;font-weight: bold;'>Client</p>
+    <p  *ngFor="let fonction of fonctions"><label style="padding-left: 25px;">{{fonction}}</label></p>
+    <button (click)="add()" mat-stroked-button style=" font-size: 15px; font-weight: bold">
+      <i class="fas fa-plus-circle icon" id="plus" aria-hidden="true" style="color: green;"></i>&nbsp;&nbsp;Saisir nouveau client</button>
+   </div>
+  </div>
+</div>
+
+</div>
+
+<button mat-strike-button style="background-color: green;color: white;font-size: 15px;font-weight: bold;margin-left:40%;
+margin-top:3%;bottom: 15px;left: 45%;height: 40px;
+width: 250px">Enregistrer modifications</button>
+
+
+<!-- Popup ajout user -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Supprimer Un utilisateur</h4>
+      <button focusable="false" (click)="modal.dismiss('Cross click')" class="btn btn-primary" style="  background-color: #ff9b30;
+          border-color: #ff9b30;">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="input-group">
+          <label>Nouvelle Technique</label>
+          <input type="text" name="technique"  [(ngModel)]="technique">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" mat-stroked-button (click)="modal.close('Save click')">Ajouté</button>
+    </div>
+
+  </ng-template>

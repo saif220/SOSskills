@@ -1,0 +1,75 @@
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+th {
+  clear:left;
+  background-color: #ff9b30;
+  color: white;
+  text-align: center;
+}
+td {
+  font-size: 15px;
+}
+
+.fa-trash {
+  color: white;
+}
+
+.fa-pen {
+  color:white;
+}
+
+.fa-plus {
+  color:white;
+}
+
+
+
+.btn{
+  width:15%;
+  position:relative;
+  height:40px;
+}
+
+.icon{
+  position:absolute;
+  left:0px;
+  top:5px;
+  font-size:20px;
+}
+
+.wrapper{
+  padding:5%;
+}
+
+.btn #plus{
+  width:5%;
+  position:relative;
+  height:20px;
+}
+
+.icon #plus{
+  position:absolute;
+  left:57px;
+  top:3px;
+  font-size:50px;
+}
+
+
+
+
+
+
+

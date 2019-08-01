@@ -1,0 +1,33 @@
+.full-width-table {
+  width: 100%;
+}
+
+.data-table{
+  width: 100%;
+  margin-left: 0px;
+}
+
+th,td {
+  text-align: center;
+
+
+
+}
+
+th {
+  clear:left;
+  background-color: #ff9b30;
+  color: white;
+  text-align: center;
+}
+
+table {
+
+  width: 100%;
+}
+
+th:not(:last-child), td:not(:last-child) { border-right: 1px solid #ff9b30; }
+
+td {
+  font-size: 15px;
+}

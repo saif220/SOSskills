@@ -1,0 +1,98 @@
+<p style='font-size: 25px;font-weight: bold;text-align: center'>Ajout / Suppression mots clés</p>
+<div class="mat-elevation-z8" style="  height: 520px;
+overflow: auto;">
+<br>
+<div id="header-div"><p style='font-size: 20px;text-align: center;font-weight: bold;color: white'>TAG</p></div>
+<br>
+<div id="container">
+  <div class="row">
+   <div class="col-sm-4" ><p style='font-size: 20px;margin-left: 5%;font-weight: bold;'>Technique</p>
+    <p  *ngFor="let technique of techniques let i = index; trackBy: trackByFn" ><mat-checkbox style="padding: 25px;width: 15px;height: 15px;" checked>{{technique}}</mat-checkbox></p>
+    <button (click)="open(content)" mat-stroked-button style="font-size: 15px; font-weight: bold">
+      <i class="fas fa-plus-circle icon" id="plus" aria-hidden="true" style="color: green;"></i>&nbsp;&nbsp;Saisir nouvelle technologie</button>
+   </div>
+   <div class="col-sm-4" ><p style='font-size: 20px;margin-left: 5%;font-weight: bold;'>Métier</p>
+    <p  *ngFor="let metier of metiers"><mat-checkbox style="padding: 25px;" >{{metier}}</mat-checkbox></p>
+    <button (click)="open2(content2)" mat-stroked-button style="font-size: 15px; font-weight: bold">
+      <i class="fas fa-plus-circle icon" id="plus" aria-hidden="true" style="color: green;"></i>&nbsp;&nbsp;Saisir nouveau métier</button>
+   </div>
+   <div class="col-sm-4" ><p style='font-size: 20px;margin-left: 5%;font-weight: bold;'>Fonction</p>
+    <p  *ngFor="let fonction of fonctions"><mat-checkbox style="padding: 25px;" >{{fonction}}</mat-checkbox></p>
+    <button (click)="open3(content3)" mat-stroked-button style="font-size: 15px; font-weight: bold">
+      <i class="fas fa-plus-circle icon" id="plus" aria-hidden="true" style="color: green;"></i>&nbsp;&nbsp;Saisir nouvelle fonction</button>
+   </div>
+  </div>
+</div>
+
+</div>
+
+<button mat-strike-button style="background-color: green;color: white;font-size: 15px;font-weight: bold;margin-left:40%;
+margin-top:3%;left: 45%;height: 40px;
+width: 250px">Enregistrer modifications</button>
+
+
+<!-- Popup ajout Technique -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Ajouté Une Technique</h4>
+      <button focusable="false" (click)="modal.dismiss('Cross click')" class="btn btn-primary" style="  background-color: #ff9b30;
+          border-color: #ff9b30;">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="input-group">
+          <label>Nouvelle Technique</label>&nbsp;&nbsp;
+          <input type="text" name="technique"  [(ngModel)]="technique">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" mat-stroked-button (click)="modal.close('Save click')">Ajouté</button>
+    </div>
+
+  </ng-template>
+
+  <!-- Popup ajout Métier -->
+<ng-template #content2 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Ajouté Un Métier</h4>
+    <button focusable="false" (click)="modal.dismiss('Cross click')" class="btn btn-primary" style="  background-color: #ff9b30;
+        border-color: #ff9b30;">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div class="input-group">
+        <label>Nouveau Métier</label>&nbsp;&nbsp;
+        <input type="text" name="metier"  [(ngModel)]="metier">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" mat-stroked-button (click)="modal.close('Save click')">Ajouté</button>
+  </div>
+
+</ng-template>
+
+  <!-- Popup ajout Fonction -->
+  <ng-template #content3 let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Ajouté Une Fonction</h4>
+      <button focusable="false" (click)="modal.dismiss('Cross click')" class="btn btn-primary" style="  background-color: #ff9b30;
+          border-color: #ff9b30;">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="input-group">
+          <label>Nouvelle Fonction</label>&nbsp;&nbsp;
+          <input type="text" name="fonction"  [(ngModel)]="fonction">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" mat-stroked-button (click)="modal.close('Save click')">Ajouté</button>
+    </div>
+
+  </ng-template>

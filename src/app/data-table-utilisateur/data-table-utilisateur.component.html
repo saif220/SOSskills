@@ -1,0 +1,144 @@
+<br><br>
+  <form (submit)="addRow()">
+    <p style='font-size: 25px;font-weight: bold;text-align: center'>Ajout d'un utilisateur</p>
+    <br><br>
+
+    <div class="example-container">
+        <mat-form-field style="width: 250px" >
+          <input matInput placeholder="Prénom" type="text" name="prenom" [(ngModel)]="prenom">
+        </mat-form-field>
+
+        <mat-form-field style="width: 300px; padding-left: 100px" >
+          <input matInput placeholder="Nom" type="text" [(ngModel)]="nom" name="nom">
+        </mat-form-field>
+
+        <mat-form-field style="width: 300px; padding-left: 100px" >
+          <input matInput placeholder="E-mail" type="text" [(ngModel)]="email" name="email">
+        </mat-form-field>
+
+        <mat-form-field style="width: 200px; padding-left: 100px" >
+          <input matInput placeholder="Password" type="password" [(ngModel)]="password" name="password">
+        </mat-form-field>
+
+        <mat-form-field style="width: 200px; padding-left: 100px" >
+          <input matInput placeholder="Droit" type="text" [(ngModel)]="droit" name="droit">
+        </mat-form-field>
+        <button class="btn btn-primary" id="plus" style="  background-color: #11e457; margin-left: 50px;
+        border-color: #11e457;" type="submit"><i class="fas fa-plus icon" id="plus" aria-hidden="true"></i></button>
+      </div>
+
+  </form>
+
+
+  <br><br>
+  <div fxLayout fxLayoutAlign="center center">
+    <mat-form-field fxFlex="40%">
+      <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+
+<div class="mat-elevation-z8">
+  <table mat-table class="full-width-table" matSort aria-label="Elements" id="customers" [dataSource]="dataSource">
+    <!-- Prenom Column -->
+    <ng-container matColumnDef="prenom">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 20px">Prénom</th>
+      <td mat-cell *matCellDef="let row">{{row.prenom}}</td>
+    </ng-container>
+
+    <!-- Nom Column -->
+    <ng-container matColumnDef="nom">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 20px">Nom</th>
+      <td mat-cell *matCellDef="let row">{{row.nom}}</td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 20px">E-mail</th>
+      <td mat-cell *matCellDef="let row">{{row.email}}</td>
+    </ng-container>
+
+    <!-- Password Column -->
+    <ng-container matColumnDef="password">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 20px">Password</th>
+      <td mat-cell *matCellDef="let row">{{row.password}}</td>
+    </ng-container>
+
+    <!-- Droit Column -->
+    <ng-container matColumnDef="droit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 20px">Droit</th>
+      <td mat-cell *matCellDef="let row">{{row.droit}}</td>
+    </ng-container>
+
+    <!-- Operations Column -->
+    <ng-container matColumnDef="operations">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 20px">Opérations</th>
+      <td mat-cell *matCellDef="let row; let j = index;"><button focusable="false" (click)="open(content,j)" class="btn btn-primary" style="  background-color: #ff0a0a;
+        border-color: #ff0a0a;"><i class="fa fa-trash" aria-hidden="true"></i></button>&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary" style="  background-color: #ffcc00;
+        border-color: #ffcc00;" (click)="open2(content2,j)"><i class="fas fa-pen" aria-hidden="true"></i></button></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource?.data.length"
+      [pageIndex]="0"
+      [pageSize]="50"
+      [pageSizeOptions]="[25, 50, 100, 250]">
+  </mat-paginator>
+</div>
+
+<!-- Popup Delete user -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Supprimer Un utilisateur</h4>
+    <button focusable="false" (click)="modal.dismiss('Cross click')" class="btn btn-primary" style="  background-color: #ff9b30;
+        border-color: #ff9b30;">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="input-group">
+        <p>Supprimé ?</p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" mat-stroked-button (click)="modal.close('Save click')">Supprimé</button>
+  </div>
+</ng-template>
+
+
+
+<!-- Popup Update user -->
+<ng-template #content2 let-modal2>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Modifier Un utilisateur</h4>
+    <button focusable="false" (click)="modal2.dismiss('Cross click')" class="btn btn-primary" style="  background-color: #ff9b30;
+        border-color: #ff9b30;">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="input-group">
+        <form (submit)="updateUser()">
+        <label>Prénom</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style="width: 350px;" name="prenomEdit"  [(ngModel)]="prenomEdit">
+        <label>Nom</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style="width: 350px;" name="nomEdit"  [(ngModel)]="nomEdit">
+        <label>Email</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style="width: 350px;" name="emailEdit"  [(ngModel)]="emailEdit">
+        <label>Password</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style="width: 350px;" name="passwordEdit"  [(ngModel)]="passwordEdit">
+        <label>Droit</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style="width: 350px;" name="droitEdit"  [(ngModel)]="droitEdit">
+        </form>
+      </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" mat-stroked-button (click)="modal2.close('Save click')">Modifier</button>
+  </div>
+</ng-template>
+
+
+
+
+
+

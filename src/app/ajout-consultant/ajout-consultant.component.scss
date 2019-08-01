@@ -1,0 +1,8 @@
+.example-container {
+  display: flex;
+
+}
+
+.example-container > * {
+  width: 100%;
+}

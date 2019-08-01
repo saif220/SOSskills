@@ -1,0 +1,97 @@
+<p style='font-size: 25px;font-weight: bold;text-align: center'>Ajout d'un consultant</p>
+<form (submit)="addConsultant()">
+<div class="example-container">
+    <mat-form-field style="width: 200px" >
+      <input matInput placeholder="Nom" type="text" [(ngModel)]="nom" name="nom">
+    </mat-form-field>
+
+    <mat-form-field style="width: 250px; padding-left: 50px" >
+      <input matInput placeholder="Prénom" type="text" [(ngModel)]="prenom" name="prenom">
+    </mat-form-field>
+
+    <mat-form-field style="width: 250px; padding-left: 50px" >
+      <input matInput placeholder="Titre" type="text" [(ngModel)]="titre" name="titre">
+    </mat-form-field>
+
+    <mat-form-field style="width: 150px; padding-left: 50px" >
+      <input matInput placeholder="TJM" type="text" [(ngModel)]="tjm" name="tjm">
+    </mat-form-field>
+
+    <mat-form-field style="width: 250px; padding-left: 50px">
+    <mat-label>Disponibilité</mat-label>
+      <mat-select name="dispo" [(ngModel)]="dispo">
+        <mat-option *ngFor="let dispo of disponibilities" [value]="dispo.value">
+          {{dispo.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field style="width: 250px; padding-left: 50px">
+        <mat-label>Qualité CV</mat-label>
+          <mat-select name="quali" [(ngModel)]="quali">
+            <mat-option *ngFor="let qualite of qualites" [value]="qualite.value">
+              {{qualite.value}}
+            </mat-option>
+          </mat-select>
+    </mat-form-field>
+
+
+  </div>
+<br><br>
+  <div class="example-container">
+      <mat-form-field style="width: 200px" >
+        <input matInput placeholder="Télephone" type="text" [(ngModel)]="tel" name="tel">
+      </mat-form-field>
+
+      <mat-form-field style="width: 250px; padding-left: 50px" >
+        <input matInput placeholder="E-Mail" type="text" [(ngModel)]="email" name="email">
+      </mat-form-field>
+
+      <mat-form-field style="width: 250px; padding-left: 50px" >
+        <input matInput placeholder="LinkedIn" type="text" [(ngModel)]="linkedin" name="linkedin">
+      </mat-form-field>
+
+    </div>
+
+    <br><br>
+  <div class="example-container">
+      <mat-form-field style="width: 200px" >
+        <input matInput placeholder="Code Postale" type="text" [(ngModel)]="codep" name="codep">
+      </mat-form-field>
+
+      <mat-form-field style="width: 450px; padding-left: 50px" >
+        <input matInput placeholder="Addresse" type="text" [(ngModel)]="addresse" name="addresse">
+      </mat-form-field>
+  </div>
+
+  <br><br>
+  <div class="example-container">
+      <mat-form-field class="example-full-width" style="width: 400px;">
+          <textarea matInput placeholder="Observations" type="text" [(ngModel)]="observation" name="observation" style="height: 70px;"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" style="width: 450px; padding-left: 50px">
+          <textarea matInput placeholder="Actions" style="height: 70px;"></textarea>
+      </mat-form-field>
+  </div>
+
+  <br><br>
+  <div class="example-container">
+      <mat-form-field class="example-full-width" style="width: 400px;">
+          <textarea matInput placeholder="Technologies" type="text" [(ngModel)]="technologie" name="technologie" style="height: 70px;"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" style="width: 250px; padding-left: 50px">
+          <textarea matInput placeholder="Clients" type="text" [(ngModel)]="client" name="client" style="height: 70px;"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" style="width: 250px; padding-left: 50px">
+          <textarea matInput placeholder="CV" style="height: 70px;"></textarea>
+      </mat-form-field>
+  </div>
+
+  <button mat-strike-button type="submit" style="background-color: green;color: white;font-size: 15px;font-weight: bold;margin-left:40%;
+margin-top:3%;left: 45%;height: 40px;
+width: 250px">Enregistrer modifications</button>
+
+</form>
