@@ -81,6 +81,7 @@ import {
   MatStepperModule
 } from '@angular/material';
 import { FicheConsultantComponent } from './fiche-consultant/fiche-consultant.component';
+import { DownloadFileComponent } from './download-file/download-file.component';
 
 //
 @NgModule({
@@ -100,6 +101,7 @@ import { FicheConsultantComponent } from './fiche-consultant/fiche-consultant.co
     AjoutConsultantComponent,
     FicheConsultantComponent,
     FilterPipe,
+    DownloadFileComponent,
   ],
   imports: [
     BrowserModule,

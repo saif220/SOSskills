@@ -85,13 +85,31 @@
           <textarea matInput placeholder="Clients" type="text" [(ngModel)]="client" name="client" style="height: 70px;"></textarea>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width" style="width: 250px; padding-left: 50px">
-          <textarea matInput placeholder="CV" style="height: 70px;"></textarea>
-      </mat-form-field>
+
+
+
+  </div>
+  <br>
+  <label style="padding-left: 15px">CV</label><br>
+  <div *ngIf="currentFileUpload" class="progress">
+    <div class="progress-bar progress-bar-info progress-bar-striped" style="padding-left: 15px" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+      aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+      {{progress.percentage}}%</div>
   </div>
 
-  <button mat-strike-button type="submit" style="background-color: green;color: white;font-size: 15px;font-weight: bold;margin-left:40%;
+
+  <label class="btn btn-default">
+    <input type="file" (change)="selectFile($event)">
+  </label>
+  <br>
+
+  <button mat-strike-button type="submit" [disabled]="!selectedFiles" style="background-color: green;color: white;font-size: 15px;font-weight: bold;margin-left:40%;
 margin-top:3%;left: 45%;height: 40px;
 width: 250px">Enregistrer modifications</button>
 
+
 </form>
+<br><br>
+<div class="alert alert-danger" *ngIf="showMainContent">
+  <strong>Faux!</strong> Il faut remplir tout les champs
+</div>

@@ -129,6 +129,8 @@ export class DataTableComponent implements  OnInit {
   };
 
   ngOnInit() {
+    console.log('aaaazzz');
+    ELEMENT_DATA.splice(0,ELEMENT_DATA.length);
     this.getUsers();
     this.getFonction();
     this.getTechnique();

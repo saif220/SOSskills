@@ -1,8 +1,4 @@
-<div fxLayout fxLayoutAlign="center center">
-  <mat-form-field fxFlex="40%">
-    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
-  </mat-form-field>
-</div>
+
 <div class="mat-elevation-z8 data-table">
   <table mat-table class="full-width-table" matSort [dataSource]="dataSource">
     <!-- Cv Column -->
